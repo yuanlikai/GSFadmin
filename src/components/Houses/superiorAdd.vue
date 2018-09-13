@@ -69,21 +69,21 @@
             <Col span="12">
 
             <FormItem label="规划车位" prop="quality_spot">
-              <InputNumber :max="1000" :min="1" v-model="formValidate.quality_spot"></InputNumber>
+              <InputNumber :max="100000" :min="1" v-model="formValidate.quality_spot"></InputNumber>
             </FormItem>
             </Col>
 
 
             <Col span="12">
             <FormItem label="物业费¥" prop="quality_pertyfee">
-              <InputNumber :max="99" :min="1" v-model="formValidate.quality_pertyfee"></InputNumber>
+              <InputNumber :max="999" :min="1" v-model="formValidate.quality_pertyfee"></InputNumber>
               <!--<Input :max="100" :min="1" v-model="formValidate.quality_pertyfee"></Input>-->
             </FormItem>
             </Col>
 
             <Col span="12">
             <FormItem label="占地面m²" prop="quality_area">
-              <InputNumber :max="100000" :min="1" v-model="formValidate.quality_area"></InputNumber>
+              <InputNumber :max="100000000" :min="1" v-model="formValidate.quality_area"></InputNumber>
               <!--<Input :max="100" :min="1" v-model="formValidate.quality_area"></Input>-->
             </FormItem>
             </Col>
@@ -91,7 +91,7 @@
             <Col span="12">
             <FormItem label="规划户数" prop="quality_number">
 
-              <InputNumber :max="1000" :min="1" v-model="formValidate.quality_number"></InputNumber>
+              <InputNumber :max="1000000" :min="1" v-model="formValidate.quality_number"></InputNumber>
               <!--<Input :max="100" :min="1" v-model="formValidate.quality_number"></Input>-->
             </FormItem>
             </Col>
@@ -188,7 +188,7 @@
             </Col>
             <Col span="12">
             <FormItem label="均价/m²" prop="quality_pirce">
-              <InputNumber :max="200000" :min="1" v-model="formValidate.quality_pirce"></InputNumber>
+              <InputNumber :max="20000000" :min="1" v-model="formValidate.quality_pirce"></InputNumber>
               <!--<Input :max="100" :min="1" v-model="formValidate.quality_pirce"></Input>-->
             </FormItem>
             </Col>
