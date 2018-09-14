@@ -89,7 +89,7 @@
             </Col>
 
             <Col span="12">
-            <FormItem label="规划户数" prop="quality_number">
+            <FormItem label="规划户数." prop="quality_number">
 
               <InputNumber :max="1000000" :min="1" v-model="formValidate.quality_number"></InputNumber>
               <!--<Input :max="100" :min="1" v-model="formValidate.quality_number"></Input>-->
@@ -554,7 +554,7 @@
         });
       },
       handleBeforeUpload() {
-        const check = this.uploadList.length < 5;
+        const check = this.uploadList.length < 1000;
         if (!check) {
           this.$Notice.warning({
             title: 'Up to five pictures can be uploaded.'

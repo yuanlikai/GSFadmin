@@ -22,16 +22,16 @@ import Axios from 'axios'
 Vue.prototype.Axios = Axios;
 
 // 添加请求拦截器
-Axios.interceptors.request.use(function (config) {
-  if (Yl.cookie('admin') || config.url === '/index.php/admin/login/login') {
-    return config;
-  } else {
-    router.push('/')
-  }
-}, function (error) {
-  // 对请求错误做些什么
-  return Promise.reject(error);
-});
+// Axios.interceptors.request.use(function (config) {
+//   if (Yl.cookie('admin') || config.url === '/index.php/admin/login/login') {
+//     return config;
+//   } else {
+//     router.push('/')
+//   }
+// }, function (error) {
+//   // 对请求错误做些什么
+//   return Promise.reject(error);
+// });
 
 
 function timestampToTime(timestamp) {

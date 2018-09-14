@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="login-con">
-      <Card icon="log-in" title="欢迎登录" :bordered="false">
+      <Card icon="log-in" title="欢迎登录-" :bordered="false">
         <div class="form-con">
           <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
             <FormItem prop="user" style="width: 268px">
