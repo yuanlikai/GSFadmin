@@ -49,78 +49,84 @@
                 :open-names="[active.split('-')[0],active.split('-')[0].length==2?active.split('-')[0].substr(0,1):'']"
                 @on-select="select">
 
-            <Submenu name="1">
+            <!--<Submenu name="1">-->
+              <!--<template slot="title">-->
+                <!--<Icon type="md-lock"/>-->
+                <!--RBAC权限管理-->
+              <!--</template>-->
+              <!--<MenuItem name="1-1">管理员管理</MenuItem>-->
+              <!--<MenuItem name="1-2">职位管理</MenuItem>-->
+              <!--<MenuItem name="1-3">权限管理</MenuItem>-->
+            <!--</Submenu>-->
+
+            <!--<Submenu name="2">-->
+              <!--<template slot="title">-->
+                <!--<Icon type="ios-home"/>-->
+                <!--楼盘管理-->
+              <!--</template>-->
+              <!--<MenuItem name="2-1">类型列表</MenuItem>-->
+              <!--<MenuItem name="2-2">规格列表</MenuItem>-->
+              <!--<MenuItem name="2-3">优质楼盘</MenuItem>-->
+              <!--<Submenu name="21">-->
+                <!--<template slot="title">-->
+                  <!--个人房源管理-->
+                <!--</template>-->
+                <!--<MenuItem name="21-4">未审核房源</MenuItem>-->
+                <!--<MenuItem name="21-5">已审核房源</MenuItem>-->
+              <!--</Submenu>-->
+              <!--<Submenu name="22">-->
+                <!--<template slot="title">-->
+                  <!--中介楼盘管理-->
+                <!--</template>-->
+                <!--<MenuItem name="22-6">未审核楼盘</MenuItem>-->
+                <!--<MenuItem name="22-7">已审核楼盘</MenuItem>-->
+                <!--<MenuItem name="22-8">评论未审核</MenuItem>-->
+                <!--<MenuItem name="22-9">评论已审核</MenuItem>-->
+              <!--</Submenu>-->
+              <!--<Submenu name="23">-->
+                <!--<template slot="title">-->
+                  <!--开发商楼盘管理-->
+                <!--</template>-->
+                <!--<MenuItem name="23-10">未审核楼盘</MenuItem>-->
+                <!--<MenuItem name="23-11">已审核楼盘</MenuItem>-->
+                <!--<MenuItem name="23-12">评论未审核</MenuItem>-->
+                <!--<MenuItem name="23-13">评论已审核</MenuItem>-->
+              <!--</Submenu>-->
+              <!--<MenuItem name="2-4">预约管理</MenuItem>-->
+            <!--</Submenu>-->
+
+            <Submenu v-for="(item,index) in list" :key="index" :name="item.node_desc">
               <template slot="title">
-                <Icon type="md-lock"/>
-                RBAC权限管理
+                <!--<Icon type="ios-people"/>-->
+                {{item.node_name}}
               </template>
-              <MenuItem name="1-1">管理员管理</MenuItem>
-              <MenuItem name="1-2">职位管理</MenuItem>
-              <MenuItem name="1-3">权限管理</MenuItem>
+              <MenuItem v-for="(items,indexs) in item.son" :key="indexs" :name="items.node_desc">{{items.node_name}}</MenuItem>
             </Submenu>
 
-            <Submenu name="2">
-              <template slot="title">
-                <Icon type="ios-home"/>
-                楼盘管理
-              </template>
-              <MenuItem name="2-1">类型列表</MenuItem>
-              <MenuItem name="2-2">规格列表</MenuItem>
-              <MenuItem name="2-3">优质楼盘</MenuItem>
-              <Submenu name="21">
-                <template slot="title">
-                  个人房源管理
-                </template>
-                <MenuItem name="21-4">未审核房源</MenuItem>
-                <MenuItem name="21-5">已审核房源</MenuItem>
-              </Submenu>
-              <Submenu name="22">
-                <template slot="title">
-                  中介楼盘管理
-                </template>
-                <MenuItem name="22-6">未审核楼盘</MenuItem>
-                <MenuItem name="22-7">已审核楼盘</MenuItem>
-                <MenuItem name="22-8">评论未审核</MenuItem>
-                <MenuItem name="22-9">评论已审核</MenuItem>
-              </Submenu>
-              <Submenu name="23">
-                <template slot="title">
-                  开发商楼盘管理
-                </template>
-                <MenuItem name="23-10">未审核楼盘</MenuItem>
-                <MenuItem name="23-11">已审核楼盘</MenuItem>
-                <MenuItem name="23-12">评论未审核</MenuItem>
-                <MenuItem name="23-13">评论已审核</MenuItem>
-              </Submenu>
-              <MenuItem name="2-4">预约管理</MenuItem>
-            </Submenu>
-
-            <Submenu name="3">
-              <template slot="title">
-                <Icon type="ios-people"/>
-                用户管理
-              </template>
-              <MenuItem name="3-1">用户列表</MenuItem>
-              <MenuItem name="3-2">中介列表</MenuItem>
-              <MenuItem name="3-3">开发商列表</MenuItem>
-              <MenuItem name="3-4">未审核列表</MenuItem>
-            </Submenu>
-
-            <Submenu name="4">
-              <template slot="title">
-                <Icon type="ios-people"/>
-                其他管理
-              </template>
-              <MenuItem name="4-1">日志管理</MenuItem>
-              <MenuItem name="4-2">意见反馈</MenuItem>
-              <MenuItem name="4-3">中介报备</MenuItem>
-              <MenuItem name="4-4">轮播图管理</MenuItem>
-              <MenuItem name="4-5">活动管理</MenuItem>
-              <MenuItem name="4-6">新闻管理</MenuItem>
-              <MenuItem name="4-7">订单管理</MenuItem>
-              <MenuItem name="4-8">收藏列表</MenuItem>
-            </Submenu>
-
+            <!--<Submenu v-for="(item,index) in list" :key="index" name="3">-->
+              <!--<template slot="title">-->
+                <!--<Icon type="ios-people"/>-->
+                <!--{{item.node_name}}-->
+              <!--</template>-->
+              <!--<MenuItem name="3-1">用户列表</MenuItem>-->
+              <!--<MenuItem name="3-2">中介列表</MenuItem>-->
+              <!--<MenuItem name="3-3">开发商列表</MenuItem>-->
+              <!--<MenuItem name="3-4">未审核列表</MenuItem>-->
+            <!--</Submenu>-->
+            <!--<Submenu name="4">-->
+              <!--<template slot="title">-->
+                <!--<Icon type="ios-people"/>-->
+                <!--其他管理-->
+              <!--</template>-->
+              <!--<MenuItem name="4-1">日志管理</MenuItem>-->
+              <!--<MenuItem name="4-2">意见反馈</MenuItem>-->
+              <!--<MenuItem name="4-3">中介报备</MenuItem>-->
+              <!--<MenuItem name="4-4">轮播图管理</MenuItem>-->
+              <!--<MenuItem name="4-5">活动管理</MenuItem>-->
+              <!--<MenuItem name="4-6">新闻管理</MenuItem>-->
+              <!--<MenuItem name="4-7">订单管理</MenuItem>-->
+              <!--<MenuItem name="4-8">收藏列表</MenuItem>-->
+            <!--</Submenu>-->
           </Menu>
         </Sider>
         <router-view></router-view>
@@ -133,21 +139,20 @@
   export default {
     data() {
       return {
+        list: [],
         user: window.sessionStorage.getItem('user'),
         active: sessionStorage.getItem('sele')
       }
     },
     methods: {
-      returns(name){
-        if(name==1){
-          console.log('1')
-          this.Yl.removeCookie('admin')
-          this.$Message.success('退出登录成功')
+      returns(name) {
+        if (name == 1) {
+          this.Yl.removeCookie('admin');
+          this.$Message.success('退出登录成功');
           this.$router.push('/')
         }
       },
       select(name) {
-        console.log(name)
         switch (name) {
 
           case '1-1':
@@ -270,11 +275,18 @@
             sessionStorage.setItem('sele', name);
             break;
         }
+      },
+
+      rbac() {
+        let v = this;
+        v.Axios.post('/index.php/admin/miao/_initialize').then((res, req) => {
+          v.list = res.data.data
+          console.log(res.data.data)
+        })
       }
-
-
     },
     mounted() {
+      this.rbac();
     }
 
   }
