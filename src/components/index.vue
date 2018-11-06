@@ -61,10 +61,10 @@
                 admin_pwd: v.formInline.password
               })).then((res, req) => {
                 if (res.data.error === 0) {
-                  window.sessionStorage.setItem('sele','1-1');
+                  window.sessionStorage.setItem('sele','0-0');
                   window.sessionStorage.setItem('user',v.formInline.user);
                   v.$Message.success(res.data.errMsg);
-                  v.$router.push('Admin')
+                  v.$router.push('welcome')
                 } else {
                   v.$Message.error(res.data.errMsg)
                 }

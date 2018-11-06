@@ -10,7 +10,6 @@
   .layout-logo {
     width: 100px;
     height: 30px;
-    background: #5b6270;
     border-radius: 3px;
     float: left;
     position: relative;
@@ -30,7 +29,9 @@
 
       <Header>
         <Menu @on-select="returns" mode="horizontal" theme="dark" active-name="2">
-          <div class="layout-logo"></div>
+          <div class="layout-logo">
+            <img style="float: left;" src="https://gsfhuodong.oss-cn-hangzhou.aliyuncs.com/logo.jpg" alt="">
+          </div>
           <div class="layout-nav">
             <MenuItem name="1" style="float: right">
               退出

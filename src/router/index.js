@@ -16,6 +16,12 @@ export default new Router({
       name: 'Home',
       component: (resolve) => require(['@/components/Home'], resolve),
       children: [
+        //欢迎页
+        {
+          path: '/welcome',
+          name: 'welcome',
+          component: (resolve) => require(['@/components/welcome'], resolve)
+        },
 
         //权限管理
         {
