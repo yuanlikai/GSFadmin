@@ -74,6 +74,7 @@
           <Col span="12">
           <FormItem label="朝向" prop="hou_ses_look">
             <Select v-model="formValidate.hou_ses_look" placeholder="请选择">
+              <Option value="南"></Option>
               <Option value="正南"></Option>
               <Option value="东南"></Option>
               <Option value="东"></Option>
@@ -160,6 +161,7 @@
         }
       };
       return {
+        hou_ses_id:'',
         defaultList: [],
         imgName: '',
         visible: false,
@@ -290,28 +292,49 @@
           {
             title: '操作',
             align: 'center',
-            width: 100,
+            width: 150,
             render: (h, params) => {
               return h('div', [
-                // h('Button', {
-                //   props: {
-                //     type: 'primary',
-                //     size: 'small'
-                //   },
-                //   style: {
-                //     marginRight: '5px'
-                //   },
-                //   on: {
-                //     click: () => {
-                //       let v = this;
-                //       v.state = 1;
-                //       v.modal1 = true;
-                //       v.loading1 = true;
-                //       v.hou_size_id = params.row.hou_size_id;
-                //       v.formValidate.name = params.row.hou_size_info;
-                //     }
-                //   }
-                // }, '修改'),
+                h('Button', {
+                  props: {
+                    type: 'primary',
+                    size: 'small'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  },
+                  on: {
+                    click: () => {
+                      this.spec();
+                      this.defaultList=[
+                        {
+                          'name': 'a42bdcc1178e62b4694c830f028db5c0',
+                          'url': 'http://img.gsfzd.com/'+params.row.hou_ses_pic
+                        },
+                      ];
+                      setTimeout(()=>{
+                        this.uploadList = this.$refs.upload.fileList;
+                      },1);
+                      this.modal1=true;
+                      this.$refs['formValidate'].resetFields();
+                      this.hou_ses_id=params.row.hou_ses_id;
+                      this.formValidate={
+                          hou_names: '',
+                          hou_ses_content: params.row.hou_ses_content,
+                          hou_ses_pic: '',
+                          hou_ses_name: params.row.hou_ses_name,
+                          hou_size_id: String(params.row.hou_size_id),
+                          hou_ses_area: params.row.hou_ses_area,
+                          hou_ses_price: String(params.row.hou_ses_price),
+                          hou_ses_feat: params.row.hou_ses_feat,
+                          hou_ses_look: params.row.hou_ses_look,
+                          hou_ses_tel: params.row.hou_ses_tel,
+                      };
+
+
+                    }
+                  }
+                }, '修改'),
                 h('Poptip', {
                   props: {
                     confirm: true,
@@ -353,10 +376,12 @@
 
       //显示添加修改
       shoale() {
+
         this.$refs['formValidate'].resetFields();
         this.$refs.upload.fileList.splice(0, 1);
         this.state = 0;
         this.spec();
+        this.hou_ses_id='';
         this.modal1 = true;
         this.loading1 = true;
       },
@@ -364,12 +389,11 @@
 
       //添加楼盘户型
       handleSubmit(name) {
-        console.log(this.uploadList[0])
         this.$refs[name].validate((valid) => {
           if (valid) {
             let v = this;
             v.Axios.post('/index.php/admin/hou/hxAdd', v.Qs.stringify({
-              hou_ses_id: '',
+              hou_ses_id: v.hou_ses_id,
               hou_id: v.$route.query.hou_id,
               hou_names: v.formValidate.hou_names,
               hou_ses_content: v.formValidate.hou_ses_content,
@@ -429,7 +453,6 @@
         let v = this;
         v.Axios.post('/index.php/admin/hou/size').then((res, req) => {
           if (res.data.error === 0) {
-            console.log(res.data)
             v.poist = res.data.data;
           } else {
             v.$Message.error(res.data.errMsg);

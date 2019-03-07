@@ -96,7 +96,7 @@
               <!--<MenuItem name="2-4">预约管理</MenuItem>-->
             <!--</Submenu>-->
 
-            <Submenu v-for="(item,index) in list" :key="index" :name="item.node_desc">
+            <Submenu v-for="(item,index) in list" :key="index" :name="Number(item.node_desc)">
               <template slot="title">
                 <!--<Icon type="ios-people"/>-->
                 {{item.node_name}}
@@ -282,7 +282,6 @@
         let v = this;
         v.Axios.post('/index.php/admin/miao/_initialize').then((res, req) => {
           v.list = res.data.data
-          console.log(res.data.data)
         })
       }
     },
